@@ -1,10 +1,9 @@
-FROM python:3.6-alpine
+FROM python:3.6-slim
 
 RUN mkdir -p /deploy/app
 
 COPY requirements.txt /deploy/
 RUN apk --update add --virtual build-base \
-  && apt-get install -y --no-install-recommends gcc and-build-dependencies \
   && python3 -m ensurepip \
   && pip3 install --upgrade pip \
   && pip3 install --upgrade setuptools \
