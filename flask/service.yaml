@@ -3,10 +3,11 @@ kind: Service
 metadata:
   name: k3s-flask
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
-  - port: 5000
-    targetPort: 80
+  - port: 80
+    targetPort: 5000
+    nodePort: 30036
     protocol: TCP
     name: http
   selector:
