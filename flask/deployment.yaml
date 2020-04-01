@@ -12,7 +12,7 @@ spec:
       containers:
       - name: k3s-flask
         # Replace with your project ID
-        image: gcr.io/poppy-88/flask-api
+        image: index.docker.io/rpfeynman/k3s-flask:latest
         imagePullPolicy: Always
         resources:
           limits:
