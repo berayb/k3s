@@ -15,7 +15,7 @@ spec:
       containers:
         - name: k3s-flask
           # Replace with your project ID
-          image: index.docker.io/rpfeynman/k3s-flask:latest-1
+          image: index.docker.io/rpfeynman/k3s-flask:latest-2
           imagePullPolicy: Always
           resources:
             limits:
