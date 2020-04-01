@@ -4,6 +4,7 @@ RUN mkdir -p /deploy/app
 
 COPY requirements.txt /deploy/
 RUN apk --update add --virtual build-base \
+  && sudo apt-get install python3-dev \
   && python3 -m ensurepip \
   && pip install --upgrade pip \
   && pip install --upgrade setuptools \
