@@ -4,6 +4,9 @@ metadata:
   name: k3s-flask
 spec:
   replicas: 3
+  selector:
+    matchLabels:
+      app: k3s-flask
   template:
     metadata:
       labels:
