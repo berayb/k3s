@@ -1,25 +1,25 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: k3s-flask
 spec:
-  replicas: 1
+  replicas: 3
   template:
     metadata:
       labels:
         app: k3s-flask
     spec:
       containers:
-      - name: k3s-flask
-        # Replace with your project ID
-        image: index.docker.io/rpfeynman/k3s-flask:latest
-        imagePullPolicy: Always
-        resources:
-          limits:
-            cpu: 500m
-            memory: 1Gi
-          requests:
-            cpu: 150m
-            memory: 100Mi
-        ports:
-        - containerPort: 5000
+        - name: k3s-flask
+          # Replace with your project ID
+          image: index.docker.io/rpfeynman/k3s-flask:latest
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: 500m
+              memory: 1Gi
+            requests:
+              cpu: 150m
+              memory: 100Mi
+          ports:
+            - containerPort: 5000
