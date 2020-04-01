@@ -4,7 +4,10 @@ RUN mkdir -p /deploy/app
 
 COPY requirements.txt /deploy/
 
-RUN pip install -r /deploy/requirements.txt 
+RUN apt-get update \
+&& apt-get install gcc -y \
+&& apt-get clean \
+&& pip install -r /deploy/requirements.txt 
 
 WORKDIR /deploy/app
 COPY . /deploy/
