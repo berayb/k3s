@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k3s-golang
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: k3s-golang
+  template:
+    metadata:
+      labels:
+        app: k3s-golang
+    spec:
+      containers:
+        - name: k3s-golang
+          # Replace with your project ID
+          image: index.docker.io/rpfeynman/k3s-golang:latest
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: 500m
+              memory: 1Gi
+            requests:
+              cpu: 150m
+              memory: 100Mi
+          ports:
+            - containerPort: 8000
