@@ -1,0 +1,29 @@
+apiVersion: k3s.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: traefik
+  namespace: kube-system
+spec:
+  chart: stable/traefik
+  set:
+    rbac.enabled: "true"
+    ssl.enabled: "true"
+    dashboard.enabled: "true"
+    dashboard.domain: "dashboard.localhost"
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: dashboard-ingress
+  namespace: kube-system
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+  - host: dashboard.localhost
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: dashboard-service
+          servicePort: http

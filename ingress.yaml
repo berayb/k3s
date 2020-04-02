@@ -1,28 +1,58 @@
-# Service_ingress-nginx.yaml
-kind: Service
-apiVersion: v1
+apiVersion: extensions/v1beta1
+kind: Deployment
 metadata:
-  name: ingress-nginx
-  namespace: ingress-nginx
-  labels:
-    app.kubernetes.io/name: ingress-nginx
-    app.kubernetes.io/part-of: ingress-nginx
+  name: k3s-flask
+  namespace: default
 spec:
-  # default for externalTrafficPolicy = 'Local', but due to an issue
-  # (https://stackoverflow.com/questions/59286126/kubernetes-cluterissuer-challenge-timeouts,
-  # https://github.com/danderson/metallb/issues/287)
-  # it has to be 'Cluster' for now
-  externalTrafficPolicy: Cluster
-  type: LoadBalancer
+  replicas: 2
   selector:
-    app.kubernetes.io/name: ingress-nginx
-    app.kubernetes.io/part-of: ingress-nginx
+    matchLabels:
+      app: k3s-flask
+  template:
+    metadata:
+      labels:
+        app: k3s-flask
+    spec:
+      containers:
+        - name: k3s-flask
+          image: index.docker.io/rpfeynman/k3s-flask:latest-2
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: 250m
+              memory: 256mi
+            requests:
+              cpu: 100m
+              memory: 100Mi
+          ports:
+            - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: k3s-flask
+  namespace: default
+spec:
   ports:
-    - name: http
-      port: 80
-      protocol: TCP
-      targetPort: http
-    - name: https
-      port: 443
-      protocol: TCP
-      targetPort: https
+  - name: http
+    targetPort: 80
+    port: 80
+  selector:
+    app: k3s-flask
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: k3s-flask
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+  - host: k3s-flask.localhost
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: k3s-flask
+          servicePort: http
