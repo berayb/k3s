@@ -3,11 +3,10 @@ kind: Service
 metadata:
   name: k3s-golang
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
   - port: 80
     targetPort: 8080
-    nodePort: 30090
     protocol: TCP
     name: http
   selector:
