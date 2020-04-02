@@ -27,7 +27,7 @@ spec:
         backend:
           serviceName: dashboard-service
           servicePort: http
-  - host: dashboard.localhost
+  - host: api-flask.localhost
     http:
       paths:
       - path: /
