@@ -1,22 +1,18 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: ingress-traefik
-  annotations:
-    kubernetes.io/ingress.class: traefik
+  name: host-ingress
 spec:
   rules:
-  - host: k3s.flask
+  - host: service-flask.com
     http:
       paths:
-      - path: /
-        backend:
+      - backend:
           serviceName: k3s-flask
           servicePort: 80
-  - host: k3s.golang
+  - host: service-golang.com
     http:
       paths:
-      - path: /
-        backend:
+      - backend:
           serviceName: k3s-golang
           servicePort: 80
