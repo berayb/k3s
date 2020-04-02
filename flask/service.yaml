@@ -3,7 +3,6 @@ kind: Service
 metadata:
   name: k3s-flask
 spec:
-  type: LoadBalancer
   ports:
   - port: 80
     targetPort: 5000

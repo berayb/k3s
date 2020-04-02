@@ -12,11 +12,11 @@ spec:
       - path: /
         backend:
           serviceName: k3s-flask
-          servicePort: http
+          servicePort: 80
   - host: k3s.golang
     http:
       paths:
       - path: /
         backend:
           serviceName: k3s-golang
-          servicePort: http
+          servicePort: 80
