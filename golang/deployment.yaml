@@ -15,7 +15,7 @@ spec:
       containers:
         - name: k3s-golang
           # Replace with your project ID
-          image: index.docker.io/rpfeynman/k3s-golang:latest
+          image: index.docker.io/rpfeynman/k3s-golang:latest-1
           imagePullPolicy: Always
           resources:
             limits:
