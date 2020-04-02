@@ -15,8 +15,6 @@ func init() {
 func main() {
 	fmt.Println("Entered in main")
 	initRouter()
-	json.NewEncoder(w).Encode("Demo Json Entered")
-
 }
 
 func initRouter() {
