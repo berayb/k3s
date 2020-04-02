@@ -23,7 +23,7 @@ func initRouter() {
 
 	router.HandleFunc("/demo", demo)
 
-	fmt.Println(http.ListenAndServe(":8000", router))
+	fmt.Println(http.ListenAndServe(":8080", router))
 
 }
 func demo(w http.ResponseWriter, r *http.Request) {
