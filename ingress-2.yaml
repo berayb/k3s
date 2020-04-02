@@ -1,20 +1,21 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: echo-ingress
+  name: name-virtual-host-ingress
   annotations:
-    kubernetes.io/ingress.class: "nginx"    
-    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    kubernetes.io/ingress.class: traefik
 spec:
   rules:
-  - host: k3s-flask
+  - host: api-flask.k3s.com
     http:
       paths:
-      - backend:
-          serviceName: qubitro-landing
+      - path: /
+        backend:
+          serviceName: k3s-flask
           servicePort: 80
-  tls:
-  - hosts:
-    - k3s-flask
-    secretName: letsencrypt-prod
+  # - host: service-b.example.com
+  #   http:
+  #     paths:
+  #     - backend:
+  #         serviceName: service-a
+  #         servicePort: 80
