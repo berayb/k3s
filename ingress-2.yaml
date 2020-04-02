@@ -2,11 +2,9 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: name-virtual-host-ingress
-  annotations:
-    kubernetes.io/ingress.class: traefik
 spec:
   rules:
-  - host: api-flask.k3s.com
+  - host: api-flask.local
     http:
       paths:
       - path: /
