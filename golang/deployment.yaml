@@ -15,7 +15,7 @@ spec:
       containers:
         - name: k3s-golang
           # Replace with your project ID
-          image: index.docker.io/rpfeynman/k3s-golang:latest-1
+          image: index.docker.io/rpfeynman/k3s-golang:latest-2
           imagePullPolicy: Always
           resources:
             limits:
@@ -25,4 +25,4 @@ spec:
               cpu: 150m
               memory: 100Mi
           ports:
-            - containerPort: 8000
+            - containerPort: 8080
