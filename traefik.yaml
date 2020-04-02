@@ -27,3 +27,10 @@ spec:
         backend:
           serviceName: dashboard-service
           servicePort: http
+  - host: dashboard.localhost
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: k3s-flask
+          servicePort: http
