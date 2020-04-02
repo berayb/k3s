@@ -1,18 +1,15 @@
-apiVersion: extensions/v1beta1
+---
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: host-ingress
+  name: k3s-ingress
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
 spec:
   rules:
-  - host: service-flask.com
-    http:
+  - http:
       paths:
-      - backend:
+      - path: /
+        backend:
           serviceName: k3s-flask
-          servicePort: 80
-  - host: service-golang.com
-    http:
-      paths:
-      - backend:
-          serviceName: k3s-golang
           servicePort: 80
