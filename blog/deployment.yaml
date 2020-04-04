@@ -1,4 +1,4 @@
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: blog
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: blog
-        image: ghost:2.6-alpine
+        image: ghost:3-alpine
         imagePullPolicy: Always
         resources:
             limits:
