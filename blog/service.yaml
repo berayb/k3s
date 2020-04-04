@@ -3,10 +3,11 @@ kind: Service
 metadata:
   name: blog
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: blog
   ports:
   - protocol: TCP
+    nodePort: 30036
     port: 80
     targetPort: 2368
