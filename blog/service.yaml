@@ -8,5 +8,5 @@ spec:
     app: blog
   ports:
   - protocol: TCP
-    port: 2368
+    port: 80
     targetPort: 2368
