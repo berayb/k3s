@@ -27,7 +27,6 @@ func initRouter() {
 
 }
 func demo(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("Demo OK")
-	json.NewEncoder(w).Encode("Demo Json OK")
+	json.NewEncoder(w).Encode("Demo Json Response OK")
 	w.WriteHeader(http.StatusOK)
 }
