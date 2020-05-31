@@ -3,11 +3,11 @@ kind: Service
 metadata:
   name: k3s-flask
 spec:
- selector:
+  type: NodePort
+  selector:
     app: k3s-flask
- ports:
-   - port: 80
-     targetPort: 5000
-     protocol: TCP
-     name: http
- 
+  ports:
+  - protocol: TCP
+    nodePort: 30037
+    port: 80
+    targetPort: 5000

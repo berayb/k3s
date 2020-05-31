@@ -3,10 +3,11 @@ kind: Service
 metadata:
   name: k3s-golang
 spec:
-  ports:
-  - port: 80
-    targetPort: 8080
-    protocol: TCP
-    name: http
+  type: NodePort
   selector:
     app: k3s-golang
+  ports:
+  - protocol: TCP
+    nodePort: 30038
+    port: 80
+    targetPort: 8080
